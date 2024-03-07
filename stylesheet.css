@@ -1,17 +1,17 @@
 body{
     margin: 0;
     padding: 0;
-    background: url(waszp.jpg) no-repeat;
+    background: url(waszp.jpg) no-repeat center center fixed;
     background-size: cover;
    
   }
   .box{
-    width: 750px;
+    width: 90%; /* Adjusted for mobile */
     background: rgba(147, 216, 255, 0.3);
     backdrop-filter: blur(30px);
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
-    padding: 40px;
+    padding: 20px; /* Adjusted for mobile */
     text-align: center;
     margin: auto;
     margin-top: 5%;
@@ -27,28 +27,21 @@ body{
     height: 192.375px;   
 
   }
-  .box h1{
-    display: inline;
-    text-align: center;
-    font-size: 35px;
-    letter-spacing: 4px;
-    font-weight: 350;
-  }
-  .box h2{
-    display: inline;
-    font-size: 35px;
-    letter-spacing: 4px;
-    font-weight: 350; 
 
-  }
+.box h1, .box h2 {
+    font-size: 28px; /* Adjusted for mobile */
+    letter-spacing: 2px; /* Adjusted for mobile */
+    font-weight: 350;
+}
+
   .box h5{
-    font-size: 25px;
-    letter-spacing: 3px;
+    font-size: 20px; /* Adjusted for mobile */
+    letter-spacing: 2px; /* Adjusted for mobile */
     font-weight: 200;
   }
   .box p{
-    font-size: 16px;
-    letter-spacing: 2px;
+    font-size: 14px; /* Adjusted for mobile */
+    letter-spacing: 1px; /* Adjusted for mobile */
     font-weight: 300;
   }
   ul{
@@ -57,15 +50,47 @@ body{
   }
   .box li{
     display: inline-block;
-    margin: 25px;
+    margin: 10px; /* Adjusted for mobile */
     list-style: none;
   }
   .box li a{
     color: white;
     text-decoration: none;
-    font-size: 50px;
+    font-size: 30px; /* Adjusted for mobile */
     transition: all ease-in-out 250ms;
   }
   .box li a:hover{
     color: #b9b9b9;
   }
+
+
+/* Media query for tablets and desktops */
+@media (min-width: 768px) {
+    .box {
+        width: 750px; /* Original width */
+        padding: 40px; /* Original padding */
+    }
+
+    .box h1, .box h2 {
+        font-size: 35px; /* Original font size */
+        letter-spacing: 4px; /* Original letter spacing */
+    }
+
+    .box h5 {
+        font-size: 25px; /* Original font size */
+        letter-spacing: 3px; /* Original letter spacing */
+    }
+
+    .box p {
+        font-size: 16px; /* Original font size */
+        letter-spacing: 2px; /* Original letter spacing */
+    }
+
+    .box li {
+        margin: 25px; /* Original margin */
+    }
+
+    .box li a {
+        font-size: 50px; /* Original font size */
+    }
+}
