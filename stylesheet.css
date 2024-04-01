@@ -8,6 +8,7 @@ body{
   .box{
     width: 90%; /* Adjusted for mobile */
     background: rgba(147, 216, 255, 0.3);
+    -webkit-backdrop-filter: blur(30px); /* Prefix for iOS Safari and other WebKit-based browsers */
     backdrop-filter: blur(30px);
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
