@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- HERO -->
+<section class="relative h-screen flex items-center justify-center text-white">
+
+    <div class="absolute inset-0">
+        {% if homepage and homepage.hero_image %}
+            <img src="{{ homepage.hero_image.url }}"
+                 class="w-full h-full object-cover">
+        {% endif %}
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-6">
+        {% if homepage %}
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+                {{ homepage.hero_title }}
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-200 max-w-2xl mx-auto">
+                {{ homepage.hero_subtitle }}
+            </p>
+        {% endif %}
+    </div>
+
+</section>
+
+
+<!-- ABOUT SNAPSHOT -->
+<section class="py-32 bg-white">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+        {% if homepage and homepage.about_image %}
+            <img src="{{ homepage.about_image.url }}"
+                 class="w-full h-96 object-cover">
+        {% endif %}
+
+        <div>
+            <h2 class="text-3xl font-bold mb-6">About</h2>
+            <p class="text-gray-700 leading-relaxed mb-6">
+                {{ homepage.about_text }}
+            </p>
+
+            <a href="{% url 'about' %}"
+               class="inline-block border-b border-black pb-1 hover:opacity-60 transition">
+                Read Full Bio →
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- STATS -->
+<section class="py-24 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+
+        {% for stat in stats %}
+            <div>
+                <div class="text-4xl md:text-5xl font-bold mb-2">
+                    {{ stat.value }}
+                </div>
+                <div class="text-gray-600 uppercase tracking-wide text-sm">
+                    {{ stat.label }}
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+
+<!-- PARTNERS -->
+<section class="py-32 bg-white">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-16">Partners</h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 items-center">
+            {% for sponsor in sponsors %}
+                {% if sponsor.logo %}
+                    <a href="{% url 'partners' %}">
+                        <img src="{{ sponsor.logo.url }}"
+                             class="h-20 mx-auto object-contain hover:opacity-60 transition">
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<!-- FEATURED MEDIA -->
+<section class="py-32 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-16 text-center">Featured</h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            {% for item in featured_media %}
+                <div>
+                    <img src="{{ item.image.url }}"
+                         class="w-full h-80 object-cover mb-4">
+                    {% if item.caption %}
+                        <p class="text-sm text-gray-600">
+                            {{ item.caption }}
+                        </p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

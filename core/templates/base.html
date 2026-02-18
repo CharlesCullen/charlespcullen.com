@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Charles P Cullen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white text-gray-900">
+
+    <!-- Navigation -->
+    <nav id="navbar"
+     class="fixed w-full z-50 transition-all duration-300">
+
+    <div class="max-w-6xl mx-auto px-6 py-1 flex justify-between items-center">
+
+        <a href="{% url 'home' %}" class="nav-text transition-all duration-300">
+             {% if homepage and homepage.site_logo %}
+               <img src="{{ homepage.site_logo.url }}" 
+                    class="h-16 md:h-24 object-contain">
+             {% else %}
+              <span class="text-white font-bold text-xl">
+            Charles P Cullen
+              </span>
+             {% endif %}
+        </a>
+
+        <div class="space-x-6">
+            <a href="{% url 'home' %}" class="nav-text text-sm tracking-wide hover:text-gray-300 transition">Home</a>
+            <a href="{% url 'about' %}" class="nav-text text-sm tracking-wide hover:text-gray-300 transition">About</a>
+            <a href="{% url 'partners' %}" class="nav-text text-sm tracking-wide hover:text-gray-300 transition">Partners</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'admin:index' %}"
+               class="text-xs text-gray-400 hover:text-black transition">Admin</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+    <!-- Page Content -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10 mt-20">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p>© 2026 charlespcullen</p>
+        </div>
+    </footer>
+
+<script>
+    const navbar = document.getElementById("navbar");
+    const navTexts = document.querySelectorAll(".nav-text");
+
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 50) {
+            navbar.classList.add("bg-black/40", "backdrop-blur-md", "shadow-md");
+            navbar.classList.remove("bg-transparent");
+
+            navTexts.forEach(link => {
+                link.classList.remove("text-black");
+                link.classList.add("text-white");
+            });
+
+        } else {
+            navbar.classList.remove("bg-black/40", "backdrop-blur-md", "shadow-md");
+
+            navTexts.forEach(link => {
+                link.classList.add("text-white");
+                link.classList.remove("text-black");
+            });
+        }
+    });
+
+     window.addEventListener("load", function () {
+        const hero = document.getElementById("hero-content");
+        if (hero) {
+            hero.classList.remove("opacity-0", "translate-y-6");
+        }
+    });
+</script>
+
+</body>
+</html>
+
